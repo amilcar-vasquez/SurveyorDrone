@@ -54,6 +54,18 @@ def send(cmd, delay=3):
         sys.exit(1)
 
 
+##alernatively 
+# # Mission Sequence
+# try:
+#     send("command")
+#     send("takeoff")
+#     send("land")
+# except KeyboardInterrupt:
+#     print("\nOperation interrupted by user.")
+# finally:
+#     sock.close()
+#   print("Connection closed.")
+#creates a pseudo terminal for user to input commands
 # Mission Sequence
 try:
     while True:
