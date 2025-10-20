@@ -1,4 +1,4 @@
-# Author: D'Alesseo Requena
+# Author: D'Alesseo Requena, Immanuel Garcia
 # Date: 2025-10-17
 # Description: This code tests the fight mechanics of the TLW004 drone model.
 
