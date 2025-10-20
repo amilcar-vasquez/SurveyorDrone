@@ -10,7 +10,6 @@
 import socket
 import time
 import sys
-from turtle import delay
 
 # Tello connection setup
 tello_address = ('192.168.10.1', 8889)
