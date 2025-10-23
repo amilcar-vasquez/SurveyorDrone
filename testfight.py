@@ -32,9 +32,9 @@ def send(cmd, delay=3):
         # Wait for response to confirm drone is connected
         try:
             response, addr = sock.recvfrom(1024)
-            print(f"<< {response.decode('utf-8')}")
+            print(f"<< {response.decode('latin1')}")
 
-            if response.decode('utf-8').strip().lower() == 'error':
+            if response.decode('latin1').strip().lower() == 'error':
                 print("Drone returned error. Stopping execution.")
                 sock.close()
                 sys.exit(1)
