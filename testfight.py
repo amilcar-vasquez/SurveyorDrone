@@ -11,6 +11,10 @@ import socket
 import time
 import sys
 
+#importing video class file
+
+import videoClass
+
 # Tello connection setup
 tello_address = ('192.168.10.1', 8889)
 print("Connecting to Tello Drone...")
@@ -46,42 +50,47 @@ def send(cmd, delay=3):
             sys.exit(1)
 
         time.sleep(delay)
+        except Exception as e:
+            print(f"Error sending command '{cmd}': {e}")
+            print("Drone not found or connection failed. Stopping execution.")
+            sock.close()
+            sys.exit(1)
 
-    except Exception as e:
-        print(f"Error sending command '{cmd}': {e}")
-        print("Drone not found or connection failed. Stopping execution.")
+    # Mission Sequence
+    try:
+        send("command")
+        send("takeoff")
+        send("land")
+    except KeyboardInterrupt:
+        print("\nOperation interrupted by user.")
+    finally:
+        # Close the socket connection gracefully
         sock.close()
-        sys.exit(1)
+        print("Connection closed.")
 
-
-##alernatively 
+# # Creates a pseudo terminal for user to input commands
 # # Mission Sequence
 # try:
-#     send("command")
-#     send("takeoff")
-#     send("land")
+# # Main command loop - accepts user input and sends to drone
+# while True:
+#     try:
+#         # Get user input from command prompt
+#         user_input = input("tello/> ").strip()
+#         
+#         # Skip empty inputs
+#         if not user_input:
+#             continue
+#         
+#         # Send command to Tello drone
+#         send(user_input)
+#         
+#     except EOFError:
+#         # Handle Ctrl+D (EOF signal)
+#         print("\nEOF received. Exiting...")
+#         break
+#         
 # except KeyboardInterrupt:
-#     print("\nOperation interrupted by user.")
+# # Handle Ctrl+C interruption
+# print("\nOperation interrupted by user.")
+
 # finally:
-#     sock.close()
-#   print("Connection closed.")
-#creates a pseudo terminal for user to input commands
-# Mission Sequence
-try:
-    while True:
-        try:
-            # Get user input
-            user_input = input("tello/> ").strip()
-            if not user_input:
-                continue
-            # Send command to Tello
-            send(user_input)
-        except EOFError:
-            # Handle Ctrl+D
-            print("\nEOF received. Exiting...")
-            break
-except KeyboardInterrupt:
-    print("\nOperation interrupted by user.")
-finally:
-    sock.close()
-    print("Connection closed.")

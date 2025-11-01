@@ -1,0 +1,29 @@
+# Color detection ranges for the drone application
+
+# Define HSV color ranges for detection
+COLOR_RANGES = {
+    "red": {
+        "lower": (0, 100, 100),
+        "upper": (10, 255, 255)
+    },
+    "green": {
+        "lower": (40, 100, 100),
+        "upper": (80, 255, 255)
+    },
+    "blue": {
+        "lower": (100, 100, 100),
+        "upper": (140, 255, 255)
+    },
+    "yellow": {
+        "lower": (20, 100, 100),
+        "upper": (30, 255, 255)
+    },
+    "orange": {
+        "lower": (10, 100, 100),
+        "upper": (20, 255, 255)
+    },
+    "purple": {
+        "lower": (140, 100, 100),
+        "upper": (160, 255, 255)
+    }
+}

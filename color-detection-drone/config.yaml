@@ -1,0 +1,31 @@
+# Configuration settings for the color detection drone project
+
+video:
+  resolution: "640x480"
+  frame_rate: 30
+
+drone:
+  address: "192.168.10.1"
+  command_port: 8889
+  video_port: 9000
+
+color_detection:
+  use_yolo: false
+  hsv_ranges:
+    red:
+      lower: [0, 100, 100]
+      upper: [10, 255, 255]
+    green:
+      lower: [40, 100, 100]
+      upper: [80, 255, 255]
+    blue:
+      lower: [100, 100, 100]
+      upper: [140, 255, 255]
+
+movement:
+  speed: 50
+  turn_angle: 30
+
+logging:
+  level: "INFO"
+  file: "drone_log.txt"
